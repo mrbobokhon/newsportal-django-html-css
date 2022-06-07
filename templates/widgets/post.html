@@ -1,0 +1,45 @@
+{% load static %}
+{% load static i18n %}
+    <div class="col-lg-3 mb-3 align-items-stretch">
+        <div class="card h-100">
+        <a href="{% url 'main:view' item.id %}">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" class="card-img-top" alt="...">
+            {% else %}
+            <img src="{% static 'img/aaa.jpeg' %}" class="card-img-top" alt="...">
+            {% endif %}
+        </a>
+            <div class="card-body d-flex flex-column">
+                <p class="tag card-text text-uppercase text-muted fw-normal ">
+                    <a class="text-decoration-none"
+                       href="{% url 'main:cat' item.category_id %}">{{ item.category.name }}</a>
+                    <m class="text-capitalize"> | {{ item.user.username }}</m>
+                    <i class="bi bi-person text-success"></i>
+                </p>
+                <h5 class="card-title">{{ item.subject }}</h5>
+                <p class="card-text">{{ item.content }}</p>
+                <div class="mt-auto">
+                    <div class="d-flex align-items-center">
+                        <a href="{% url 'main:like' 'like' item.id %}"
+                           class="btn btn-outline-success btn-sm"><i class="bi-hand-thumbs-up"></i>
+                        {{ item.like }}
+                        </a>
+                        <a href="{% url 'main:like' 'dislike' item.id %}"
+                           class="btn btn-outline-danger btn-sm ms-2"><i class="bi-hand-thumbs-down"></i>
+                        {{ item.dislike }}
+                        </a>
+                    <div class="ms-2">
+                        <i class="bi-eye"></i>
+                        {{ item.read }}
+                    </div>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'main:edit' item.id %}"
+                               class="ms-auto btn btn-info btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
+                            <a href="{% url 'main:delete-post' item.id %}" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

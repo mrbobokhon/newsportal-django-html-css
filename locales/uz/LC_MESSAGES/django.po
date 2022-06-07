@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-24 20:34+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: main/models.py:9
+msgid "Sarlavha (uz)"
+msgstr ""
+
+#: main/models.py:10
+msgid "Sarlavha (ru)"
+msgstr ""
+
+#: main/models.py:11
+msgid "Izoh (uz)"
+msgstr ""
+
+#: main/models.py:12
+msgid "Izoh (ru)"
+msgstr ""
+
+#: main/models.py:13
+msgid "img"
+msgstr ""
+
+#: main/views.py:13
+msgid "Bosh sahifa"
+msgstr ""
+
+#: main/views.py:24
+msgid "Biz haqimizda"
+msgstr ""
+
+#: main/views.py:35
+msgid "Maqlola qo'shish"
+msgstr ""
+
+#: main/views.py:41
+msgid "Maqola muvaffqiyatli qo'shildi"
+msgstr ""
+
+#: main/views.py:52
+msgid "Maqola Muvaffqiyatli o'chirldi"
+msgstr ""
+
+#: templates/layouts/base.html:29
+msgid "Bosh Sahifa"
+msgstr ""
+
+#: templates/layouts/base.html:33
+msgid "Yangiliklar"
+msgstr ""
+
+#: templates/layouts/base.html:37
+msgid "Savdo maydonchasi"
+msgstr ""
+
+#: templates/layouts/base.html:41
+msgid "Online konsultatsiya"
+msgstr ""
+
+#: templates/layouts/base.html:45
+msgid "Foydali ma`lumotlar"
+msgstr ""
+
+#: templates/layouts/base.html:49
+msgid "Vedio-saboqlar"
+msgstr ""
+
+#: templates/layouts/base.html:53
+msgid "Narx navolar"
+msgstr ""
+
+#: templates/layouts/base.html:57
+msgid "Biz Haqmizda"
+msgstr ""
+
+#: templates/layouts/base.html:63
+msgid "Maqola Qo'shish"
+msgstr ""
+
+#: templates/layouts/base.html:67
+msgid "Ro'yaxatdan O'tish"
+msgstr ""
+
+#: templates/main/add-post.html:13
+msgid "Qo'shish"
+msgstr ""
+
+#: templates/main/index.html:20
+msgid "Davomi"
+msgstr ""
+
+#: templates/main/index.html:22
+msgid "Ochirish"
+msgstr ""

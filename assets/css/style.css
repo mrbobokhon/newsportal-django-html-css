@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
+
+html, body {
+    font-family: 'Poppins', serif;
+    font-size: 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    margin: 0;
+    top: 0;
+    left: 0;
+
+}
+
+/*body {*/
+/*    background-color: cornsilk;*/
+/*}*/
+
+/*.nav-link {*/
+/*    position: relative;*/
+/*}*/
+
+/*.nav-link:after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    right: 100%;*/
+/*    bottom: -3px;*/
+/*    height: 5px;*/
+/*    background: #38b000;*/
+/*}*/
+
+.nav-link:hover:after {
+    right: 0;
+}
+
+
+.post-img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.ms-6 {
+    margin-left: 7rem !important;
+}
+
+/*.navbar {*/
+/*    background-color: #55a630;*/
+/*}*/
+
+.navbrand {
+    font-family: 'Charm';
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.header a {
+    font-size: 16px;
+    font-family: 'fantasy';
+    font-weight: bold;
+}
+
+.chiqish {
+    border-radius: 50px;
+}a
+
+.header .navbrand:hover {
+    color: red;
+}
+
+.tag::before {
+    content: " ";
+    display: inline-block;
+    margin-right: .5rem;
+    border-left: 2px solid #00bbf9;
+    height: 0.75rem;
+    padding: 0;
+    width: 0;
+}
+
+.me-auto {
+    margin-left: 72rem !important;
+    margin-bottom: 15px;
+}

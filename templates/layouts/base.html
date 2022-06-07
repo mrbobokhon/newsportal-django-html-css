@@ -1,0 +1,169 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ request.page_title }}</title>
+    <link rel="icon" href="{% static 'img/title4.jpg' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbrand navbar-brand ms-6" style="font-family: 'Charm'; font-weight: 700; font-size: 30px;"
+           href="{% url 'main:index' %}">NewsPortal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'index' %} active {% endif %}"
+                       href="{% url 'main:index' %}">{% translate "Bosh Sahifa" %}</a>
+                </li>
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link {% if request.resolver_match.url_name == 'news' %} active {% endif %}"#}
+{#                       href="{% url 'main:news' %}">{% translate "Yangiliklar" %}</a>#}
+{#                </li>#}
+{#                <li class="nav-item dropdown">#}
+{#                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"#}
+{#                       data-bs-toggle="dropdown" aria-expanded="false">{% translate "Boshqalar" %} </a>#}
+{#                    <ul class="dropdown-menu mt-3 me-5" aria-labelledby="navbarDropdown">#}
+{#                        <li>#}
+{#                            <a class="dropdown-item {% if request.resolver_match.url_name == 'shop' %} active {% endif %}"#}
+{#                               href="{% url 'main:shop' %}">{% translate "Savdo maydonchasi" %}</a>#}
+{#                        <li>#}
+{#                            <a class="dropdown-item {% if request.resolver_match.url_name == 'support' %} active {% endif %}"#}
+{#                               href="{% url 'main:support' %}">{% translate "Online konsultatsiya" %}</a>#}
+{#                        <li>#}
+{#                            <hr class="dropdown-divider">#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a class="dropdown-item {% if request.resolver_match.url_name == 'reference' %} active {% endif %}"#}
+{#                               href="{% url 'main:reference' %}">{% translate "Foydali ma`lumotlar" %}</a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link {% if request.resolver_match.url_name == 'training' %} active {% endif %}"#}
+{#                       href="{% url 'main:training' %}">{% translate "Vedio-saboqlar" %}</a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link {% if request.resolver_match.url_name == 'price' %} active {% endif %}"#}
+{#                       href="{% url 'main:price' %}">{% translate "Narx navolar" %}</a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link {% if request.resolver_match.url_name == 'about' %} active {% endif %}"#}
+{#                       href="{% url 'main:about' %}">{% translate "Biz Haqmizda" %}</a>#}
+{#                </li>#}
+                {% for row in categories %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'cat' and row.id == category.id %} active {% endif %}"
+                           href="{% url 'main:cat' row.id %}">{{ row.name }}</a>
+                    </li>
+
+                {% endfor %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'about' %} active {% endif %}"
+                       href="{% url 'main:about' %}">{% translate "Biz Haqimizda" %}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="chiqish nav-link btn btn-sm  btn-light {% if request.resolver_match.url_name == 'add-post' %} active {% endif %}"
+                           href="{% url 'main:add-post' %}">{% translate "Maqola Qo'shish" %}</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="chiqish nav-link btn btn-sm btn-light {% if request.resolver_match.app_name == 'account' and request.resolver_match.url_name == 'logout' %} active {% endif %}"
+                           href="{% url 'account:logout' %}">{% translate "Chiqish" %}({{ user.username }})</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a type="button"
+                           class="nav-link btn btn-sm btn-light{% if request.resolver_match.app_name == 'account' and request.resolver_match.url_name == 'regis' %} active {% endif %}"
+                           href="{% url 'account:regis' %}">{% translate "Ro'yaxatdan O'tish" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-sm btn-light ms-2" href="#id-login-modal"
+                           data-bs-toggle="modal">{% translate "Tizimga Kirish" %}</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item dropdown ms-4">
+                    <a href="#" data-bs-toggle="dropdown" class="lan_uz dropdown-toggle btn btn-sm bg-light">
+                        {{ LANGUAGE_CODE }}
+                    </a>
+                    <div class="dropdown-menu">
+                        {% for l in LANGUAGES %}
+                            <a href="/{{ l.0 }}/" class="dropdown-item">{{ l.1 }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container bg-white shadow mt-3">
+    <div class="p-3">
+        <div class="container mt-3">
+            {% for m in messages %}
+                <div class="alert {{ m.tags }} alert-dismissible fade show">
+                    {{ m }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+            {% if request.breadcrumb %}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'main:index' %}">Bosh Sahifa</a></li>
+                        {% for item in request.breadcrumb %}
+                            {% if item.1 %}
+                                <li class="breadcrumb-item">
+                                    <a href="{{ item.1 }}">{{ item.0 }}</a>
+                                </li>
+                            {% else %}
+                                <li class="breadcrumb-item active">{{ item.0 }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </nav>
+            {% endif %}
+            {% block content %}{% endblock %}
+        {% block content2 %} {% endblock %}
+        </div>
+        <!--modal tizimga kirish-->
+        {% include 'widgets/login-modal.html' %}
+        <!--/modal tizimga kirish-->
+
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+        <script>
+            setTimeout(() => {
+                document.querySelectorAll(".alert").forEach(item => {
+                    item.classList.remove("show");
+                })
+                setTimeout(() => {
+                    document.querySelectorAll(".alert").forEach(item => {
+                        item.remove()
+                    })
+                }, 300)
+            }, 2000)
+
+            {% if request.GET.modal %}
+                new bootstrap.Modal(document.getElementById('id-login-modal')).show()
+            {% endif %}
+
+        </script>
+</body>
+
+</html>
